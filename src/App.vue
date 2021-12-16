@@ -3,9 +3,9 @@
       <div>
         {{greet}} {{name}}
       </div>
-      <div v-text="channel">
-        
+      <div v-html="channel">
       </div>
+      <div v-html="hack"></div>
   </div>
 </template>
 
@@ -17,7 +17,8 @@ export default {
     return {
       greet: 'hello',
       name: "shengo",
-      channel: 'Codevolution'
+      channel: '<b>Codevolution</b>',
+      hack: '<a href="#" onClick=alert("hacked")>win a prize!<a/>',
     };
   },
 }
