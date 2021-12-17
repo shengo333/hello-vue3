@@ -1,11 +1,20 @@
 <template>
   <div>
-      <div>
-        {{greet}} {{name}}
-      </div>
-      <div v-html="channel">
-      </div>
-      <div v-html="hack"></div>
+
+      <h2 :id="headingId">heading</h2>
+      <button :disabled="isDisabled">bind</button>
+      <h2 class="underline">Underline text</h2>
+      <h2 class="underline" :class="status">status</h2>
+      <h2 :class="isPromoted && 'promoted'">promoted movie</h2>
+      <h2 :class="isSoldOut ? 'sold-out' : 'new'">is the movie sold out?</h2>
+      <h2 :class="['new', 'promoted']">newly promoted movies</h2>
+      <h2 :class="[isSoldOut ? 'sold-out' : 'new', isPromoted && 'promoted']">arry conditionalmovies</h2>
+      <h2 :class="{
+        promoted: isPromoted,
+        new: !isSoldOut,
+        'sold-out': isSoldOut
+
+      }">object conditional movie</h2>
   </div>
 </template>
 
@@ -15,10 +24,13 @@ export default {
 
   data(){
     return {
-      greet: 'hello',
-      name: "shengo",
-      channel: '<b>Codevolution</b>',
-      hack: '<a href="#" onClick=alert("hacked")>win a prize!<a/>',
+
+      headingId: 'beka',
+      isDisabled: true,
+      status: 'success',
+      isPromoted: true,
+      isSoldOut: true
+
     };
   },
 }
@@ -32,5 +44,19 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.underline{
+  text-decoration: underline;
+}
+.promoted{
+  font-style: italic;
+}
+
+.new{
+  color: olivedrab;
+}
+.sold-out{
+  color: red;
 }
 </style>
