@@ -15,6 +15,12 @@
         'sold-out': isSoldOut
 
       }">object conditional movie</h2>
+
+      <h2 :style="{color: highlightColor, 'font-size': headerSize + 'px', padding: '20px'}">inline stile</h2>
+      <h2 :style="headerStyleObject">this is style object</h2>
+
+      <h2 :style="[baseStyleObject,successStyleObject]">Success style</h2>
+      <h2 :style="[baseStyleObject,dengerStyleObject]">denger style</h2>
   </div>
 </template>
 
@@ -29,9 +35,32 @@ export default {
       isDisabled: true,
       status: 'success',
       isPromoted: true,
-      isSoldOut: true
+      isSoldOut: true,
+      highlightColor: 'orange',
+      headerSize: 50,
+      headerStyleObject: {
+        color: 'orange',
+        fontSize: '50px',
+        padding: '20px'
 
-    };
+      },
+      baseStyleObject:{
+        fontSize: '50px',
+        padding: '20px'
+      },
+        successStyleObject:{
+        color: 'green',
+        backgroundColor: 'lightgreen',
+        border: '1px solid green'
+
+      },        
+      dengerStyleObject:{
+        color: 'darkred',
+        backgroundColor: 'red',
+        border: '1px solid red'
+
+      },
+    }
   },
 }
 </script>
