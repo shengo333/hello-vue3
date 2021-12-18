@@ -11,6 +11,9 @@
       <h2>toturials</h2>
     </template>
 
+  <h2 v-show="showElement">
+    we are using v-show
+  </h2>
 
   </div>
 </template>
@@ -22,7 +25,8 @@ export default {
   data(){
     return {
       num: 'hi',
-      display: true
+      display: true,
+      showElement: true
     }
   },
 }
