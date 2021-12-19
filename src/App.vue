@@ -1,28 +1,23 @@
 <template>
-  <template v-for="name in names" :key="name">
-    <h2>{{ name }}</h2>
-    <input placeholder="Last name" />
-    <hr />
-  </template>
-  <button @click="shuffle">Shuffle!</button>
+  
+  <div>
+    <div v-for="name in names" :key="name" >
+      <h2 v-if="name==='Bruce'"> {{ name }} </h2>
+      </div>
+  </div>    
+  
 </template>
 
 <script>
-import _ from "lodash";
+
 export default {
   name: "App",
   data() {
     return {
-      names: ["Bruce", "ბეკა", "Diana", "Barry"],
-    };
+      names: ["Bruce", "Diana", "Barry"],
+    }
   },
-  methods: {
-    shuffle() {
-      console.log(this.names);
-      this.names = _.shuffle(this.names);
-    },
-  },
-};
+}
 </script>
 
 <style>
