@@ -1,13 +1,19 @@
 <template>
   
   <div>
-    {{2+5+6}}
-    {{5+6+7}}
-    <h2> add method is here: {{add(4,6,15)}}</h2>
-    <h2> add method is here: {{add(4,20,15)}}</h2>
-    <h2>this is multiply method with data: {{multiply(basevalue)}}</h2>
+    <h2>{{name}}</h2>
+    <div>
+      <button @click="name= 'batmen'">change name</button>
+    </div>
+    <h2>{{count}}</h2>
+    <div>
+      <button @click="incriment(10)">incriment 10</button>
+      <button @click="incriment(5)">incriment 5</button>
+
+      <button @click="decriment(10)">decriment 10 </button>
+      <button @click="decriment(5)">decriment 5</button>
+    </div>
   </div>
-      
   
 </template>
 
@@ -17,16 +23,17 @@ export default {
   name: "App",
   data() {
     return{
-      baseMultiplier: 5,
-      basevalue: 12
+      name: 'wishvas',
+      count: 0,
+      num: 5
     }
   },
   methods:{
-    add( a,b,c){
-      return a+b+c
-    },
-    multiply(num){
-      return num * this.baseMultiplier
+    incriment(num){
+      this.count +=num
+    },    
+    decriment(num){
+      this.count -=num
     }
   }
 }
