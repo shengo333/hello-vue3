@@ -3,11 +3,11 @@
   <div>
     <h2>{{name}}</h2>
     <div>
-      <button @click="name= 'batmen'">change name</button>
+      <button @click="changeName($event), incriment(1, $event)">change name</button>
     </div>
     <h2>{{count}}</h2>
     <div>
-      <button @click="incriment(10)">incriment 10</button>
+      <button @click="incriment(10, $event)">incriment 10</button>
       <button @click="incriment(5)">incriment 5</button>
 
       <button @click="decriment(10)">decriment 10 </button>
@@ -31,9 +31,14 @@ export default {
   methods:{
     incriment(num){
       this.count +=num
+      console.log('Event',event)
     },    
     decriment(num){
       this.count -=num
+    },
+    changeName(){
+      this.name = 'shengo'
+      console.log('Event',event)
     }
   }
 }
