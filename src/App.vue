@@ -1,8 +1,13 @@
 <template>
   <div>
-    <h2 v-once>{{name}}</h2>
-    <button @click="changeName"> change name</button>
-    <h2 v-pre>{{name}}</h2>
+    <h2>Full name: {{firstName}} {{lastName}}</h2>
+    <h2> Computed Full name: {{fullName}}</h2>
+
+    <button @click="items.push({id: 4, title: 'keyboard', price: 50})"> add item</button>
+
+    <h2>computed total : {{total}}</h2>
+    <h2>method total: {{getTotal()}}</h2>
+    <input type="text" v-model="country">
   </div>
 </template>
 
@@ -12,12 +17,42 @@ export default {
   name: "App",
   data() {
     return{
-        name: 'shengo'
+      firstName: 'Bruce',
+      lastName: 'Wayne',
+      items:[
+        {
+          id: 1,
+          title: 'TV',
+          price: 100,
+        },
+        {
+          id: 2,
+          title: 'Phone',
+          price: 200,
+        },
+        {
+          id: 3,
+          title: 'Laptop',
+          price: 300,
+        },
+      ],
+      country: 'germany'
     }
+
   },
   methods:{
-    changeName(){
-      return this.name = 'betman'
+    getTotal(){
+      console.log('gettotal method')
+      return this.items.reduce((total, curr) => (total = total + curr.price), 0)
+    }
+  },
+  computed:{
+    fullName(){
+      return `${this.firstName} - ${this.lastName}`
+    },
+    total(){
+      console.log('total computed property')
+      return this.items.reduce((total, curr) => (total = total + curr.price), 0) 
     }
   }
 }
