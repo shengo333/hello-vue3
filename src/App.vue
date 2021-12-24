@@ -6,6 +6,12 @@
       <button @click="volume += 2">Increase volume</button>
       <button @click="volume -= 2">Decrease volume</button>
     </div>
+    <input type="text" v-model="movie">
+    <input type="text" v-model="movieInfo.title">
+    <input type="text" v-model="movieInfo.actor">
+    <div>
+      <button @click="movieList =movieList.concat (['wonderwomen'])">add movie</button>
+    </div>
   </div>
 </template>
 
@@ -15,7 +21,13 @@ export default {
   name: "App",
   data() {
     return{
-      volume: 0
+      volume: 0,
+      movie: 'Batman',
+      movieInfo:{
+        title: '',
+        actor: '',
+      },
+      movieList:['Batman','Superman']
     }
   },
   methods:{},
@@ -25,6 +37,24 @@ export default {
       if(newValue >oldValue && newValue ===16){
         alert('this is dengerouse for your ears')
       }
+    },
+    movie: {
+      handler(newValue){
+      console.log(`we are consoling new value for movie which is: ${newValue}`)
+      },
+    immediate: true,
+    },
+    movieInfo: {
+      handler(newValue){
+      console.log(`we are consoling new value for movie info ${newValue.title} and ${newValue.actor}`)
+      },
+    deep: true,
+    },
+    movieList: {
+      handler(newValue){
+        console.log(`updatedList ${newValue}`)
+      },
+      //deep: true
     }
   }
 }
@@ -64,10 +94,13 @@ select{
   color: #555;
   background-color: #fff;
   background-image: none;
+  display: inline-block;
 }
+
 
 form{
   padding: 30px;
 }
+
 
 </style>
